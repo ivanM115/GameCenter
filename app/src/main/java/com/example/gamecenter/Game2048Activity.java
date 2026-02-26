@@ -26,6 +26,7 @@ public class Game2048Activity extends AppCompatActivity {
 
     private static final int SIZE = 4;
     private static final int SWIPE_THRESHOLD = 50;
+    private static final long GAME_DURATION_MS = 60 * 1000; // 1 minuto en milisegundos
 
     private final Random random = new Random();
     private final Handler handler = new Handler(Looper.getMainLooper());
@@ -35,11 +36,12 @@ public class Game2048Activity extends AppCompatActivity {
     private int score;
     private int prevScore;
     private long startTime;
-    private long prevElapsed;
+    private long timeRemaining; // Tiempo restante en milisegundos
+    private long prevTimeRemaining;
 
     private TextView scoreView;
     private TextView timeView;
-    private GridLayout gridLayout;
+    private SquareGridLayout gridLayout;
     private TextView[][] cells;
     private GestureDetector gestureDetector;
 
@@ -49,13 +51,27 @@ public class Game2048Activity extends AppCompatActivity {
 
     private boolean gameOver;
     private boolean swipeHandled;
+    private boolean hasMovements;
 
     private final Runnable timerRunnable = new Runnable() {
         @Override
         public void run() {
+            if (gameOver) {
+                return;
+            }
+
             long elapsed = System.currentTimeMillis() - startTime;
-            timeView.setText(TimeFormatter.formatMillis(elapsed));
-            handler.postDelayed(this, 500L);
+            timeRemaining = GAME_DURATION_MS - elapsed;
+
+            if (timeRemaining <= 0) {
+                timeRemaining = 0;
+                timeView.setText("00:00");
+                finishGameByTimeout();
+                return;
+            }
+
+            timeView.setText(TimeFormatter.formatMillis(timeRemaining));
+            handler.postDelayed(this, 100L); // Actualizar más frecuentemente para mejor precisión
         }
     };
 
@@ -178,6 +194,9 @@ public class Game2048Activity extends AppCompatActivity {
         score = 0;
         gameOver = false;
         swipeHandled = false;
+        hasMovements = false;
+        timeRemaining = GAME_DURATION_MS; // Inicializar con 1 minuto
+
         for (int row = 0; row < SIZE; row++) {
             for (int col = 0; col < SIZE; col++) {
                 board[row][col] = 0;
@@ -186,6 +205,11 @@ public class Game2048Activity extends AppCompatActivity {
         }
         addRandomTile();
         addRandomTile();
+
+        // Guardar el estado inicial como estado previo
+        saveUndoState();
+        hasMovements = false; // Resetear después de guardar el estado inicial
+
         startTime = System.currentTimeMillis();
         handler.removeCallbacks(timerRunnable);
         handler.post(timerRunnable);
@@ -197,15 +221,27 @@ public class Game2048Activity extends AppCompatActivity {
             System.arraycopy(board[row], 0, prevBoard[row], 0, SIZE);
         }
         prevScore = score;
-        prevElapsed = System.currentTimeMillis() - startTime;
+        prevTimeRemaining = timeRemaining;
     }
 
     private void undoMove() {
+        // Verificar si hay movimientos que deshacer
+        if (!hasMovements) {
+            Toast.makeText(this, "No hay movimientos que deshacer", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Restaurar el tablero, puntuación y tiempo restante
         for (int row = 0; row < SIZE; row++) {
             System.arraycopy(prevBoard[row], 0, board[row], 0, SIZE);
         }
         score = prevScore;
-        startTime = System.currentTimeMillis() - prevElapsed;
+        timeRemaining = prevTimeRemaining;
+
+        // Recalcular el startTime basado en el tiempo restante
+        startTime = System.currentTimeMillis() - (GAME_DURATION_MS - timeRemaining);
+
+        hasMovements = false; // Después de deshacer, no se puede deshacer de nuevo hasta el próximo movimiento
         updateUi();
     }
 
@@ -218,7 +254,7 @@ public class Game2048Activity extends AppCompatActivity {
             System.arraycopy(board[row], 0, snapshot[row], 0, SIZE);
         }
         int snapshotScore = score;
-        long snapshotElapsed = System.currentTimeMillis() - startTime;
+        long snapshotTimeRemaining = timeRemaining;
 
         boolean moved = false;
         for (int i = 0; i < SIZE; i++) {
@@ -232,11 +268,12 @@ public class Game2048Activity extends AppCompatActivity {
         }
 
         if (moved) {
+            hasMovements = true; // Marcar que se ha realizado un movimiento
             for (int row = 0; row < SIZE; row++) {
                 System.arraycopy(snapshot[row], 0, prevBoard[row], 0, SIZE);
             }
             prevScore = snapshotScore;
-            prevElapsed = snapshotElapsed;
+            prevTimeRemaining = snapshotTimeRemaining;
 
             addRandomTile();
             updateUi();
@@ -425,12 +462,25 @@ public class Game2048Activity extends AppCompatActivity {
         }
         gameOver = true;
         handler.removeCallbacks(timerRunnable);
-        long elapsed = System.currentTimeMillis() - startTime;
-        int finalScore = score + (int) (elapsed / 1000L);
+        long timeUsed = GAME_DURATION_MS - timeRemaining;
+        int finalScore = score;
         if (userId > 0 && gameId > 0) {
-            repository.insertScore(userId, gameId, finalScore, elapsed);
+            repository.insertScore(userId, gameId, finalScore, timeUsed);
         }
         Toast.makeText(this, R.string.game2048_finished, Toast.LENGTH_SHORT).show();
+    }
+
+    private void finishGameByTimeout() {
+        if (gameOver) {
+            return;
+        }
+        gameOver = true;
+        handler.removeCallbacks(timerRunnable);
+        int finalScore = score;
+        if (userId > 0 && gameId > 0) {
+            repository.insertScore(userId, gameId, finalScore, GAME_DURATION_MS);
+        }
+        Toast.makeText(this, "¡Tiempo agotado! Puntuación final: " + finalScore, Toast.LENGTH_LONG).show();
     }
 
     @Override

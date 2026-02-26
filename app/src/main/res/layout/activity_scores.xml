@@ -61,21 +61,19 @@
 
                 <Spinner
                     android:id="@+id/spinner_operator"
+                    style="@style/GameSpinner"
                     android:layout_width="0dp"
-                    android:layout_height="48dp"
                     android:layout_marginEnd="@dimen/spacing_sm"
                     android:layout_weight="1"
-                    android:background="@color/game_bg"
-                    android:padding="@dimen/spacing_sm" />
+                    android:popupBackground="@color/white" />
 
                 <Spinner
                     android:id="@+id/spinner_order"
+                    style="@style/GameSpinner"
                     android:layout_width="0dp"
-                    android:layout_height="48dp"
                     android:layout_marginStart="@dimen/spacing_sm"
                     android:layout_weight="1"
-                    android:background="@color/game_bg"
-                    android:padding="@dimen/spacing_sm" />
+                    android:popupBackground="@color/white" />
             </LinearLayout>
 
             <!-- Search button -->

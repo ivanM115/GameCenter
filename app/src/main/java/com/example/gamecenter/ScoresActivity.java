@@ -46,15 +46,15 @@ public class ScoresActivity extends AppCompatActivity {
         orderSpinner = findViewById(R.id.spinner_order);
 
         ArrayAdapter<CharSequence> operatorAdapter = ArrayAdapter.createFromResource(
-                this, R.array.score_operators, android.R.layout.simple_spinner_item
+                this, R.array.score_operators, R.layout.spinner_item
         );
-        operatorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        operatorAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         operatorSpinner.setAdapter(operatorAdapter);
 
         ArrayAdapter<CharSequence> orderAdapter = ArrayAdapter.createFromResource(
-                this, R.array.score_orders, android.R.layout.simple_spinner_item
+                this, R.array.score_orders, R.layout.spinner_item
         );
-        orderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        orderAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         orderSpinner.setAdapter(orderAdapter);
 
         RecyclerView recyclerView = findViewById(R.id.scores_list);
@@ -133,4 +133,3 @@ public class ScoresActivity extends AppCompatActivity {
         return "name";
     }
 }
-

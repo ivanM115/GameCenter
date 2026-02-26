@@ -97,13 +97,20 @@
             android:text="@string/game2048_undo" />
     </LinearLayout>
 
-    <!-- Game Grid -->
-    <GridLayout
-        android:id="@+id/game2048_grid"
+    <!-- Game Grid Container -->
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/card_bg"
-        android:padding="@dimen/spacing_sm" />
+        android:layout_gravity="center">
+
+        <com.example.gamecenter.SquareGridLayout
+            android:id="@+id/game2048_grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/card_bg"
+            android:padding="@dimen/spacing_sm" />
+    </FrameLayout>
 
 </LinearLayout>
