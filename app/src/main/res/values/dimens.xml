@@ -1,4 +1,23 @@
 <resources>
     <dimen name="tile_padding">8dp</dimen>
     <dimen name="tile_radius">8dp</dimen>
+
+    <!-- Spacing -->
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_md">16dp</dimen>
+    <dimen name="spacing_lg">24dp</dimen>
+    <dimen name="spacing_xl">32dp</dimen>
+
+    <!-- UI elements -->
+    <dimen name="card_corner_radius">16dp</dimen>
+    <dimen name="button_corner_radius">12dp</dimen>
+    <dimen name="card_elevation">8dp</dimen>
+    <dimen name="button_min_height">48dp</dimen>
+
+    <!-- Game UI -->
+    <dimen name="game_controls_height">80dp</dimen>
+    <dimen name="stats_text_size">16sp</dimen>
+    <dimen name="title_text_size">24sp</dimen>
+    <dimen name="game_title_text_size">20sp</dimen>
 </resources>

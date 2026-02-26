@@ -1,96 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/arcanoid_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="@color/game_bg"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_md">
 
-    <TextView
-        android:id="@+id/arcanoid_title"
-        android:layout_width="0dp"
+    <!-- Header with title and new game button -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/game_arcanoid_title_screen"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/spacing_md">
 
-    <TextView
-        android:id="@+id/arcanoid_score_label"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/arcanoid_title"
+            style="@style/TitleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/game_arcanoid_title_screen" />
+
+        <Button
+            android:id="@+id/arcanoid_new"
+            style="@style/GameButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/accent_purple"
+            android:text="@string/game_arcanoid_new" />
+    </LinearLayout>
+
+    <!-- Stats row -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/game_arcanoid_score"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/arcanoid_title" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/spacing_md">
 
-    <TextView
-        android:id="@+id/arcanoid_score_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:text="0"
-        app:layout_constraintStart_toEndOf="@id/arcanoid_score_label"
-        app:layout_constraintTop_toTopOf="@id/arcanoid_score_label" />
+        <TextView
+            android:id="@+id/arcanoid_score_label"
+            style="@style/StatsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/game_arcanoid_score" />
 
-    <TextView
-        android:id="@+id/arcanoid_lives_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/game_arcanoid_lives"
-        app:layout_constraintBaseline_toBaselineOf="@id/arcanoid_score_label"
-        app:layout_constraintStart_toEndOf="@id/arcanoid_score_value" />
+        <TextView
+            android:id="@+id/arcanoid_score_value"
+            style="@style/StatsValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_md"
+            android:text="0" />
 
-    <TextView
-        android:id="@+id/arcanoid_lives_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:text="3"
-        app:layout_constraintBaseline_toBaselineOf="@id/arcanoid_score_label"
-        app:layout_constraintStart_toEndOf="@id/arcanoid_lives_label" />
+        <TextView
+            android:id="@+id/arcanoid_lives_label"
+            style="@style/StatsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/game_arcanoid_lives" />
 
-    <TextView
-        android:id="@+id/arcanoid_time_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/game_arcanoid_time"
-        app:layout_constraintBaseline_toBaselineOf="@id/arcanoid_score_label"
-        app:layout_constraintStart_toEndOf="@id/arcanoid_lives_value" />
+        <TextView
+            android:id="@+id/arcanoid_lives_value"
+            style="@style/StatsValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_md"
+            android:text="3" />
 
-    <TextView
-        android:id="@+id/arcanoid_time_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:text="00:00"
-        app:layout_constraintBaseline_toBaselineOf="@id/arcanoid_score_label"
-        app:layout_constraintStart_toEndOf="@id/arcanoid_time_label" />
+        <TextView
+            android:id="@+id/arcanoid_time_label"
+            style="@style/StatsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/game_arcanoid_time" />
 
-    <Button
-        android:id="@+id/arcanoid_new"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/game_arcanoid_new"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/arcanoid_title" />
+        <TextView
+            android:id="@+id/arcanoid_time_value"
+            style="@style/StatsValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00" />
+    </LinearLayout>
 
+    <!-- Game area -->
     <com.example.gamecenter.ArcanoidView
         android:id="@+id/arcanoid_view"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/arcanoid_score_label" />
+        android:layout_weight="1" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-
+</LinearLayout>

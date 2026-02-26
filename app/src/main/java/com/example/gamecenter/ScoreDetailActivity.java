@@ -3,6 +3,7 @@ package com.example.gamecenter;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,8 +32,12 @@ public class ScoreDetailActivity extends AppCompatActivity {
 
         repository = new GameCenterRepository(this);
         long scoreId = getIntent().getLongExtra(EXTRA_SCORE_ID, -1L);
+
         if (scoreId > 0) {
             bindScore(scoreId);
+        } else {
+            Toast.makeText(this, "Error: No se encontró la puntuación", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 
@@ -46,15 +51,31 @@ public class ScoreDetailActivity extends AppCompatActivity {
                 long timeMs = cursor.getLong(cursor.getColumnIndexOrThrow("time_ms"));
                 long createdAt = cursor.getLong(cursor.getColumnIndexOrThrow("created_at"));
 
-                ((TextView) findViewById(R.id.detail_user)).setText(userName);
-                ((TextView) findViewById(R.id.detail_game)).setText(gameName);
-                ((TextView) findViewById(R.id.detail_score)).setText(String.valueOf(scoreValue));
-                ((TextView) findViewById(R.id.detail_time)).setText(TimeFormatter.formatMillis(timeMs));
-                ((TextView) findViewById(R.id.detail_date)).setText(android.text.format.DateFormat.format("yyyy-MM-dd HH:mm", createdAt));
+                // Format values
+                String timeFormatted = TimeFormatter.formatMillis(timeMs);
+                String dateFormatted = android.text.format.DateFormat.format("dd/MM/yyyy HH:mm", createdAt).toString();
+
+                // Update UI
+                updateUI(userName, gameName, scoreValue, timeFormatted, dateFormatted);
+
+            } else {
+                Toast.makeText(this, "Puntuación no encontrada", Toast.LENGTH_SHORT).show();
+                finish();
             }
+        } catch (Exception e) {
+            Toast.makeText(this, "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+            finish();
         } finally {
             cursor.close();
         }
+    }
+
+    private void updateUI(String userName, String gameName, int scoreValue, String timeFormatted, String dateFormatted) {
+        ((TextView) findViewById(R.id.detail_user)).setText(userName);
+        ((TextView) findViewById(R.id.detail_game)).setText(gameName);
+        ((TextView) findViewById(R.id.detail_score)).setText(String.valueOf(scoreValue));
+        ((TextView) findViewById(R.id.detail_time)).setText(timeFormatted);
+        ((TextView) findViewById(R.id.detail_date)).setText(dateFormatted);
     }
 }
 

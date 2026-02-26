@@ -1,70 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scores_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="@color/game_bg"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_md">
 
+    <!-- Header -->
     <TextView
         android:id="@+id/scores_title"
-        android:layout_width="0dp"
+        style="@style/TitleText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/scores_title"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/spacing_lg"
+        android:text="@string/scores_title" />
 
-    <EditText
-        android:id="@+id/search_input"
-        android:layout_width="0dp"
+    <!-- Search Card -->
+    <androidx.cardview.widget.CardView
+        style="@style/GameCard"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:hint="@string/scores_search_hint"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scores_title" />
+        android:layout_marginBottom="@dimen/spacing_md"
+        android:backgroundTint="@color/card_bg">
 
-    <Spinner
-        android:id="@+id/spinner_operator"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@id/spinner_order"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_input" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_md">
 
-    <Spinner
-        android:id="@+id/spinner_order"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/spinner_operator"
-        app:layout_constraintTop_toBottomOf="@id/search_input" />
+            <!-- Search input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_md"
+                android:hint="@string/scores_search_hint"
+                android:textColorHint="@color/white"
+                app:boxBackgroundColor="@color/game_bg"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="@color/accent_green"
+                app:hintTextColor="@color/accent_green">
 
-    <Button
-        android:id="@+id/button_search"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/scores_search_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinner_operator" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/search_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Spinners row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_md"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinner_operator"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="@dimen/spacing_sm"
+                    android:layout_weight="1"
+                    android:background="@color/game_bg"
+                    android:padding="@dimen/spacing_sm" />
+
+                <Spinner
+                    android:id="@+id/spinner_order"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="@dimen/spacing_sm"
+                    android:layout_weight="1"
+                    android:background="@color/game_bg"
+                    android:padding="@dimen/spacing_sm" />
+            </LinearLayout>
+
+            <!-- Search button -->
+            <Button
+                android:id="@+id/button_search"
+                style="@style/GameButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/accent_green"
+                android:text="@string/scores_search_button" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Results list -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/scores_list"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_search" />
+        android:layout_weight="1"
+        android:background="@color/card_bg"
+        android:padding="@dimen/spacing_sm" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-
+</LinearLayout>

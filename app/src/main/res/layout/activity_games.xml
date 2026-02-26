@@ -4,77 +4,102 @@
     android:id="@+id/games_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp">
+    android:background="@color/game_bg"
+    android:padding="@dimen/spacing_lg">
 
     <TextView
         android:id="@+id/games_title"
+        style="@style/TitleText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/games_title"
-        android:textSize="22sp"
-        android:textStyle="bold"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_2048"
+        style="@style/GameCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:backgroundTint="@color/accent_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/games_title">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/game_2048_title"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:padding="@dimen/spacing_md">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/game_2048_title"
+                android:textColor="@color/white"
+                android:textSize="@dimen/game_title_text_size"
+                android:textStyle="bold" />
+
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_bobble"
+        style="@style/GameCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:backgroundTint="@color/accent_green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_2048">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/game_bobble_title"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:padding="@dimen/spacing_md">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/game_bobble_title"
+                android:textColor="@color/white"
+                android:textSize="@dimen/game_title_text_size"
+                android:textStyle="bold" />
+
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_arcanoid"
+        style="@style/GameCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:backgroundTint="@color/accent_purple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_bobble">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/game_arcanoid_title"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:padding="@dimen/spacing_md">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/game_arcanoid_title"
+                android:textColor="@color/white"
+                android:textSize="@dimen/game_title_text_size"
+                android:textStyle="bold" />
+
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

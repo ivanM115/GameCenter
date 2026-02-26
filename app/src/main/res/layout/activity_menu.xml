@@ -4,77 +4,102 @@
     android:id="@+id/menu_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp">
+    android:background="@color/game_bg"
+    android:padding="@dimen/spacing_lg">
 
-    <ImageView
-        android:id="@+id/menu_avatar"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:contentDescription="@string/menu_photo"
-        android:src="@mipmap/ic_launcher_round"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/menu_welcome"
+    <!-- User profile card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/menu_profile_card"
+        style="@style/GameCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/menu_welcome_default"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/menu_avatar"
-        app:layout_constraintTop_toTopOf="@id/menu_avatar" />
-
-    <TextView
-        android:id="@+id/menu_status"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="@string/menu_status_placeholder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/menu_avatar"
-        app:layout_constraintTop_toBottomOf="@id/menu_welcome" />
-
-    <TextView
-        android:id="@+id/menu_points"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="@string/menu_points_placeholder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/menu_avatar"
-        app:layout_constraintTop_toBottomOf="@id/menu_status" />
-
-    <Button
-        android:id="@+id/menu_games"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/menu_games"
+        android:backgroundTint="@color/card_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/menu_avatar" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/menu_scores"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/spacing_md">
+
+            <ImageView
+                android:id="@+id/menu_avatar"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginEnd="@dimen/spacing_md"
+                android:contentDescription="@string/menu_photo"
+                android:src="@drawable/game_controller"
+                android:background="@drawable/avatar_background"
+                android:padding="8dp"
+                android:scaleType="centerInside" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/menu_welcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu_welcome_default"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/menu_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_xs"
+                    android:text="@string/menu_status_placeholder"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/menu_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_xs"
+                    android:text="@string/menu_points_placeholder"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Main navigation -->
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="@string/menu_scores"
+        android:layout_marginTop="@dimen/spacing_xl"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/menu_games" />
+        app:layout_constraintTop_toBottomOf="@id/menu_profile_card">
 
-    <Button
-        android:id="@+id/menu_challenges"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="@string/menu_challenges"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/menu_scores" />
+        <Button
+            android:id="@+id/menu_games"
+            style="@style/GameButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_md"
+            android:backgroundTint="@color/accent_blue"
+            android:text="@string/menu_games"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/menu_scores"
+            style="@style/GameButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/accent_green"
+            android:text="@string/menu_scores"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

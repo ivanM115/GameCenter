@@ -54,10 +54,6 @@ public class MenuActivity extends AppCompatActivity {
             intent.putExtra(EXTRA_USER_ID, userId);
             startActivity(intent);
         });
-        findViewById(R.id.menu_challenges).setOnClickListener(v -> {
-            Intent intent = new Intent(MenuActivity.this, ChallengesActivity.class);
-            startActivity(intent);
-        });
     }
 
     @Override
