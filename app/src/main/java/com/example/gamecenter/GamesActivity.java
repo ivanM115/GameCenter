@@ -31,12 +31,17 @@ public class GamesActivity extends AppCompatActivity {
             intent.putExtra(MenuActivity.EXTRA_USER_ID, userId);
             startActivity(intent);
         });
-        findViewById(R.id.card_tap).setOnClickListener(v -> {
-            Intent intent = new Intent(GamesActivity.this, Game2Activity.class);
+        findViewById(R.id.card_bobble).setOnClickListener(v -> {
+            Intent intent = new Intent(GamesActivity.this, PuzzleBobbleActivity.class);
+            intent.putExtra(MenuActivity.EXTRA_USERNAME, username);
+            intent.putExtra(MenuActivity.EXTRA_USER_ID, userId);
+            startActivity(intent);
+        });
+        findViewById(R.id.card_arcanoid).setOnClickListener(v -> {
+            Intent intent = new Intent(GamesActivity.this, ArcanoidActivity.class);
             intent.putExtra(MenuActivity.EXTRA_USERNAME, username);
             intent.putExtra(MenuActivity.EXTRA_USER_ID, userId);
             startActivity(intent);
         });
     }
 }
-

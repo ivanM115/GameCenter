@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GameCenter">
         <activity
+            android:name=".ArcanoidActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PuzzleBobbleActivity"
+            android:exported="false" />
+        <activity
             android:name=".MenuActivity"
             android:exported="false" />
         <activity
@@ -28,9 +34,6 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Game2Activity"
             android:exported="false" />
         <activity
             android:name=".Game2048Activity"

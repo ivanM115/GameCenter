@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class GameCenterDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "game_center.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
 
     public GameCenterDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -42,7 +42,8 @@ public class GameCenterDbHelper extends SQLiteOpenHelper {
                 + ")");
 
         db.execSQL("INSERT INTO " + DbContract.GameEntry.TABLE_NAME + " (" + DbContract.GameEntry.COLUMN_NAME + ") VALUES ('2048')");
-        db.execSQL("INSERT INTO " + DbContract.GameEntry.TABLE_NAME + " (" + DbContract.GameEntry.COLUMN_NAME + ") VALUES ('Tap Frenzy')");
+        db.execSQL("INSERT INTO " + DbContract.GameEntry.TABLE_NAME + " (" + DbContract.GameEntry.COLUMN_NAME + ") VALUES ('Puzzle Bobble')");
+        db.execSQL("INSERT INTO " + DbContract.GameEntry.TABLE_NAME + " (" + DbContract.GameEntry.COLUMN_NAME + ") VALUES ('Arcanoid')");
     }
 
     @Override
@@ -53,4 +54,3 @@ public class GameCenterDbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 }
-

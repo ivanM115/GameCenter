@@ -2,4 +2,24 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Puzzle Bobble palette -->
+    <color name="bubble_board">#FF1B1B2F</color>
+    <color name="bubble_aim">#FFFFFFFF</color>
+    <color name="bubble_red">#FFE74C3C</color>
+    <color name="bubble_blue">#FF3498DB</color>
+    <color name="bubble_green">#FF2ECC71</color>
+    <color name="bubble_yellow">#FFF1C40F</color>
+    <color name="bubble_purple">#FF9B59B6</color>
+    <color name="bubble_cyan">#FF1ABC9C</color>
+    <color name="bubble_orange">#FFE67E22</color>
+
+    <!-- Arcanoid palette -->
+    <color name="arcanoid_bg">#FF0E1B2C</color>
+    <color name="arcanoid_paddle">#FF74B9FF</color>
+    <color name="arcanoid_ball">#FFF5F6FA</color>
+    <color name="arcanoid_brick_1">#FFE17055</color>
+    <color name="arcanoid_brick_2">#FF00B894</color>
+    <color name="arcanoid_brick_3">#FFFDCB6E</color>
+    <color name="arcanoid_brick_4">#FFA29BFE</color>
 </resources>
