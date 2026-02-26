@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="tile_padding">8dp</dimen>
+    <dimen name="tile_radius">8dp</dimen>
+</resources>

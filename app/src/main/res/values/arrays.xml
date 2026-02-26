@@ -1,0 +1,13 @@
+<resources>
+    <string-array name="score_operators">
+        <item>=</item>
+        <item>></item>
+        <item>&lt;</item>
+    </string-array>
+
+    <string-array name="score_orders">
+        <item>Nombre</item>
+        <item>Score</item>
+        <item>Tiempo</item>
+    </string-array>
+</resources>

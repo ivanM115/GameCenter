@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">GameCenter</string>
+    <string name="splash_title">Game Center</string>
+    <string name="splash_subtitle">Cargando...</string>
+
+    <string name="login_title">Iniciar sesion</string>
+    <string name="login_username">Usuario</string>
+    <string name="login_password">Contrasena</string>
+    <string name="login_button">Entrar</string>
+    <string name="login_error_empty">Completa usuario y contrasena</string>
+
+    <string name="menu_welcome_default">Bienvenido</string>
+    <string name="menu_welcome_user">Bienvenido, %1$s</string>
+    <string name="menu_status_placeholder">Estado: Activo</string>
+    <string name="menu_games">Juegos</string>
+    <string name="menu_scores">Puntuaciones</string>
+    <string name="menu_challenges">Retos</string>
+    <string name="menu_photo">Foto de perfil</string>
+    <string name="menu_points_placeholder">Puntos: 0</string>
+    <string name="menu_points_value">Puntos: %1$d</string>
+
+    <string name="games_title">Juegos</string>
+    <string name="game_2048_title">2048</string>
+    <string name="game_tap_title">Tap Frenzy</string>
+
+    <string name="scores_title">Puntuaciones</string>
+    <string name="scores_search_hint">Nombre o puntuacion</string>
+    <string name="scores_search_button">Buscar</string>
+    <string name="scores_score_label">Score:</string>
+    <string name="scores_time_label">Tiempo:</string>
+
+    <string name="score_detail_title">Detalle de puntuacion</string>
+    <string name="score_detail_user">Usuario:</string>
+    <string name="score_detail_game">Juego:</string>
+    <string name="score_detail_score">Puntuacion:</string>
+    <string name="score_detail_time">Tiempo:</string>
+    <string name="score_detail_date">Fecha:</string>
+
+    <string name="game2_title">Tap Frenzy</string>
+    <string name="game2_timer">Tiempo:</string>
+    <string name="game2_score">Puntos:</string>
+    <string name="game2_start">Iniciar</string>
+    <string name="game2_tap">Toca rapido</string>
+    <string name="game2_finished">Partida guardada</string>
+
+    <string name="game2048_title">2048</string>
+    <string name="game2048_score">Score:</string>
+    <string name="game2048_time">Tiempo:</string>
+    <string name="game2048_new">Nuevo</string>
+    <string name="game2048_undo">Deshacer</string>
+    <string name="game2048_finished">Juego terminado</string>
+
+    <string name="challenges_title">Retos</string>
+    <string name="challenges_placeholder">Proximamente: retos diarios y semanales.</string>
+</resources>
